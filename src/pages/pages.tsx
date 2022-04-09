@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import routes from './routes';
 import ErrorBoundary from '../utils/ErrorBoundary';
 
@@ -10,10 +10,10 @@ const Pages = () => {
     return (
         <ErrorBoundary>
             <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                    <Route path={routes.HOME} element={HomePage} />
-                    <Route path={routes.LOGIN} element={LoginPage} />
-                </Routes>
+                <Switch>
+                    <Route path={routes.HOME} exact component={HomePage} />
+                    <Route path={routes.LOGIN} component={LoginPage} />
+                </Switch>
             </Suspense>
         </ErrorBoundary>
     )
